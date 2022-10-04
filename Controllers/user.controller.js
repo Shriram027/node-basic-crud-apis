@@ -1,5 +1,6 @@
 const userModel = require('../Models/user.model');
 
+
 exports.login = (request, response) => {
     userModel.findOne({
         email: request.body.email,
@@ -10,6 +11,7 @@ exports.login = (request, response) => {
         return response.status(500).json(error);
     })
 }
+
 
 exports.register = (request,response)=>{
     userModel.create({
