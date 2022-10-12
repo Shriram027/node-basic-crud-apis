@@ -46,7 +46,6 @@ exports.usersDetail = (request,response)=>{
     })
 }
 
-
 exports.update = async(request,response)=>{
     userModel.updateOne({_id:request.params.cid},{
         $set:{

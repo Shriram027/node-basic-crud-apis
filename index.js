@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 4000;
+
 const mongoose = require('mongoose');
 mongoose.connect("mongodb+srv://Ram:ramram@cluster0.vlfcphf.mongodb.net/?retryWrites=true&w=majority")
 .then(result=>{
@@ -13,7 +14,6 @@ mongoose.connect("mongodb+srv://Ram:ramram@cluster0.vlfcphf.mongodb.net/?retryWr
 const cors = require('cors');
 const app = express();
 app.use(cors());
-
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
