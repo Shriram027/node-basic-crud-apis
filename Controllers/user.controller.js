@@ -16,7 +16,9 @@ exports.login = (request, response) => {
 exports.register = (request,response)=>{
     userModel.create({
         name:request.body.name,
+        username: request.body.username,
         email:request.body.email,
+        website:request.body.website,
         password:request.body.password
     }).then(result=>{
         console.log(result);
@@ -36,11 +38,22 @@ exports.users = (request,response)=>{
 }
 
 
+exports.usersDetail = (request,response)=>{
+    userModel.findOne({_id:request.params.cid}).then(result=>{
+        return response.status(200).json(result);
+    }).catch(error=>{
+        return response.status(500).json(error);
+    })
+}
+
+
 exports.update = async(request,response)=>{
-    userModel.updateOne({_id:request.body.cid},{
+    userModel.updateOne({_id:request.params.cid},{
         $set:{
             name:request.body.name,
+            username:request.body.username,
             email:request.body.email,
+            website:request.body.website,
             password:request.body.password
         }
     }).then(result=>{
@@ -56,7 +69,7 @@ exports.update = async(request,response)=>{
 
 
 exports.delete = (request,response)=>{
-    userModel.deleteOne({_id:request.body.cid}).then(result=>{
+    userModel.deleteOne({_id:request.params.cid}).then(result=>{
         if(result.acknowledged==true)
         return response.status(200).json({message:"Data has been deleted"});
         else

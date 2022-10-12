@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 const mongoose = require('mongoose');
 mongoose.connect("mongodb+srv://Ram:ramram@cluster0.vlfcphf.mongodb.net/?retryWrites=true&w=majority")
 .then(result=>{
